@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameSetUp : MonoBehaviour
 {
@@ -10,13 +11,19 @@ public class GameSetUp : MonoBehaviour
     public GameObject ShortRangeSoldierButton;
 
     public GameObject soldier;
+    private List<GameObject> myArmy = new List<GameObject>();
 
     private float dist;
     private Vector3 v3;
+
+    public TextMeshProUGUI moneyLabel;
+    private int money;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        money = 100;
+        moneyLabel.text = money.ToString();
     }
 
     // Update is called once per frame
@@ -33,7 +40,15 @@ public class GameSetUp : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit, 300.0f))
                 {
-                    GameObject newSoldier = Instantiate(soldier, hit.point, Quaternion.identity);
+                    if(money >= 10)
+                    {
+                        GameObject newSoldier = Instantiate(soldier, hit.point, Quaternion.identity);
+                        myArmy.Add(newSoldier);
+                        money -= 10;
+                        moneyLabel.text = money.ToString();
+                    }
+                    
+
                 }
             }
             
