@@ -26,6 +26,15 @@ public class GameSetUp : MonoBehaviour
     public GameObject level2;
     public GameObject level3;
 
+    public GameObject ARcamera;
+    public GameObject ARtarget;
+
+    public GameObject Army;
+    public GameObject Battlefield;
+
+    public GameObject SetUpUI;
+    public GameObject StartBattleButton;
+
 
 
     // Start is called before the first frame update
@@ -46,15 +55,15 @@ public class GameSetUp : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (ShortRangeSoldierSelected)
+            if (ShortRangeSoldierSelected && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
             {
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit, 300.0f))
                 {
-                    if(money >= 10)
+                    if(money >= 10 )
                     {
-                        GameObject newSoldier = Instantiate(soldier, hit.point, Quaternion.identity);
+                        GameObject newSoldier = Instantiate(soldier, hit.point, Quaternion.identity, Army.transform);
                         myArmy.Add(newSoldier);
                         money -= 10;
                         moneyLabel.text = money.ToString();
@@ -89,39 +98,39 @@ public class GameSetUp : MonoBehaviour
 
     public void zoomIn()
     {
-        if(Camera.main.transform.position.y > 50) Camera.main.transform.Translate(Vector3.forward * 50);
-        else if (Camera.main.transform.position.y > 10) Camera.main.transform.Translate(Vector3.forward * 10);
+        if(Camera.main.transform.position.y > 5) Camera.main.transform.Translate(Vector3.forward * 2);
+        else if (Camera.main.transform.position.y > 1) Camera.main.transform.Translate(Vector3.forward * 0.5f);
     }
 
     public void zoomOut()
     {
 
-        if(Camera.main.transform.position.y < 50) Camera.main.transform.Translate(Vector3.back * 10);
-        else if (Camera.main.transform.position.y < 250) Camera.main.transform.Translate(Vector3.back  * 50);
+        if(Camera.main.transform.position.y < 5) Camera.main.transform.Translate(Vector3.back * 0.5f);
+        else if (Camera.main.transform.position.y < 25) Camera.main.transform.Translate(Vector3.back  * 2);
     }
 
     public void goUp()
     {
-        if (Camera.main.transform.position.y < 50) Camera.main.transform.Translate(Vector3.up * 10);
-        else Camera.main.transform.Translate(Vector3.up * 50);
+        if (Camera.main.transform.position.y < 5) Camera.main.transform.Translate(Vector3.up * 0.2f);
+        else Camera.main.transform.Translate(Vector3.up * 2);
     }
 
     public void goDown()
     {
-        if (Camera.main.transform.position.y < 50) Camera.main.transform.Translate(Vector3.down * 10);
-        else Camera.main.transform.Translate(Vector3.down * 50);
+        if (Camera.main.transform.position.y < 5) Camera.main.transform.Translate(Vector3.down * 0.2f);
+        else Camera.main.transform.Translate(Vector3.down * 2);
     }
 
     public void goLeft()
     {
-        if (Camera.main.transform.position.y < 50) Camera.main.transform.Translate(Vector3.left * 10);
-        else Camera.main.transform.Translate(Vector3.left * 50);
+        if (Camera.main.transform.position.y < 5) Camera.main.transform.Translate(Vector3.left * 0.2f);
+        else Camera.main.transform.Translate(Vector3.left * 2);
     }
 
     public void goRight()
     {
-        if (Camera.main.transform.position.y < 50) Camera.main.transform.Translate(Vector3.right * 10);
-        else Camera.main.transform.Translate(Vector3.right * 50);
+        if (Camera.main.transform.position.y < 5) Camera.main.transform.Translate(Vector3.right * 0.2f);
+        else Camera.main.transform.Translate(Vector3.right * 2);
     }
 
     private void ShowSelectedLevel()
@@ -143,5 +152,34 @@ public class GameSetUp : MonoBehaviour
         else Debug.Log("No level selected");
     }
 
+    public void Ready()
+    {
+        ARcamera.SetActive(true);
+        ARtarget.SetActive(true);
+        SetUpUI.SetActive(false);
+        StartBattleButton.SetActive(true);
+        level1.transform.SetParent(ARtarget.transform);
+        Army.transform.SetParent(ARtarget.transform);
+        Battlefield.transform.SetParent(ARtarget.transform);
+    }
+    public void StartBattle()
+    {
+        Debug.Log("Start battle");
+    }
+
+    public void deleteLast()
+    {
+        if(myArmy.Count >= 1)
+        {
+            GameObject SoldierToDelete = myArmy[myArmy.Count - 1];
+            myArmy.RemoveAt(myArmy.Count - 1);
+            Destroy(SoldierToDelete);
+            money += 10;
+            moneyLabel.text = money.ToString();
+            quantityLabel.text = "x" + myArmy.Count.ToString();
+
+        }
+        
+    }
 
 }
