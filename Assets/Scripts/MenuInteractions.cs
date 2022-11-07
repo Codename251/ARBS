@@ -9,6 +9,8 @@ public class MenuInteractions : MonoBehaviour
 	public GameObject defaultMenu;
 	public GameObject levels;
 
+	
+
 	public void startPlayerVSIA()
 	{
 		defaultMenu.SetActive(false);
@@ -29,17 +31,26 @@ public class MenuInteractions : MonoBehaviour
 	public void level1()
 	{
 		Debug.Log("level1");
-		Application.Quit();
+		PlayerPrefs.SetInt("Selected_Level", 1);
+		SceneManager.LoadScene("GameSetUp");
+
+
 	}
 	public void level2()
 	{
 		Debug.Log("level2");
-		Application.Quit();
+		PlayerPrefs.SetInt("Selected_Level", 2);
+		SceneManager.LoadScene("GameSetUp");
+
+
 	}
 	public void level3()
 	{
 		Debug.Log("level3");
-		Application.Quit();
+		PlayerPrefs.SetInt("Selected_Level", 3);
+		SceneManager.LoadScene("GameSetUp");
+
+
 	}
 
 

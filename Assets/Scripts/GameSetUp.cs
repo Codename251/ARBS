@@ -18,12 +18,20 @@ public class GameSetUp : MonoBehaviour
 
     public TextMeshProUGUI moneyLabel;
     private int money;
-    
+
+    private int selectedLvl = 0;
+    public GameObject level1;
+    public GameObject level2;
+    public GameObject level3;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         money = 100;
         moneyLabel.text = money.ToString();
+        ShowSelectedLevel();
     }
 
     // Update is called once per frame
@@ -109,6 +117,25 @@ public class GameSetUp : MonoBehaviour
     {
         if (Camera.main.transform.position.y < 50) Camera.main.transform.Translate(Vector3.right * 10);
         else Camera.main.transform.Translate(Vector3.right * 50);
+    }
+
+    private void ShowSelectedLevel()
+    {
+        selectedLvl = PlayerPrefs.GetInt("Selected_Level");
+
+        if (selectedLvl == 1)
+        {
+            level1.SetActive(true);
+        }
+        else if (selectedLvl == 2)
+        {
+            level2.SetActive(true);
+        }
+        else if (selectedLvl == 3)
+        {
+            level3.SetActive(true);
+        }
+        else Debug.Log("No level selected");
     }
 
 
