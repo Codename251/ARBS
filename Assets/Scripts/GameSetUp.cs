@@ -19,6 +19,8 @@ public class GameSetUp : MonoBehaviour
     public TextMeshProUGUI moneyLabel;
     private int money;
 
+    public TextMeshProUGUI quantityLabel;
+
     private int selectedLvl = 0;
     public GameObject level1;
     public GameObject level2;
@@ -31,6 +33,8 @@ public class GameSetUp : MonoBehaviour
     {
         money = 100;
         moneyLabel.text = money.ToString();
+        quantityLabel.text = "x0";
+
         ShowSelectedLevel();
     }
 
@@ -54,6 +58,7 @@ public class GameSetUp : MonoBehaviour
                         myArmy.Add(newSoldier);
                         money -= 10;
                         moneyLabel.text = money.ToString();
+                        quantityLabel.text = "x" + myArmy.Count.ToString();
                     }
                     
 
