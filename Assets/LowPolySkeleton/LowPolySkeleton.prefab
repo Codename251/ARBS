@@ -1459,6 +1459,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6782667309670242428}
   - component: {fileID: 4972723599130171459}
+  - component: {fileID: 3166305027372496834}
+  - component: {fileID: 1552193611630138945}
   m_Layer: 0
   m_Name: LowPolySkeleton
   m_TagString: Untagged
@@ -1504,6 +1506,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &3166305027372496834
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8172442304542317006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.39707002, y: 1.1987218, z: 0.26292533}
+  m_Center: {x: 0.0036774827, y: 0.61450195, z: 0.012465443}
+--- !u!114 &1552193611630138945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8172442304542317006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d25c20c5d97bad446b6770a24083dde1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8569649574974592577
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,9 +10,11 @@ public class DragSoldier : MonoBehaviour
     private Vector3 mOffset;
     private float mZCoord;
 
+
     void OnMouseDown()
 
     {
+
         mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
         // Store offset = gameobject world pos - mouse world pos
 
@@ -42,5 +44,6 @@ public class DragSoldier : MonoBehaviour
     {
         transform.position = GetMouseAsWorldPoint() + mOffset;
     }
+
 
 }
