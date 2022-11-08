@@ -6,7 +6,6 @@ using TMPro;
 
 public class GameSetUp : MonoBehaviour
 {
-
     private bool ShortRangeSoldierSelected = false;
     public GameObject ShortRangeSoldierButton;
 
@@ -35,6 +34,18 @@ public class GameSetUp : MonoBehaviour
     public GameObject SetUpUI;
     public GameObject StartBattleButton;
 
+    public GameObject mapCenter;
+
+    private float minFOV = 5f;
+    private float maxFOV = 90f;
+    private float sensitivity = 10f;
+    private float FOV;
+
+    public float horizontalSpeed = 10;
+    public float verticalSpeed = 10;
+
+    private string hitName;
+    public bool isStarted;
 
 
     // Start is called before the first frame update
@@ -43,7 +54,7 @@ public class GameSetUp : MonoBehaviour
         money = 100;
         moneyLabel.text = money.ToString();
         quantityLabel.text = "x0";
-
+        isStarted = false;
         ShowSelectedLevel();
     }
 
@@ -51,27 +62,52 @@ public class GameSetUp : MonoBehaviour
     void Update()
     {
 
+        FOV = Camera.main.fieldOfView;
+        FOV += (Input.GetAxis("Mouse ScrollWheel") * sensitivity) * -1;
+        FOV = Mathf.Clamp(FOV, minFOV, maxFOV);
+        Camera.main.fieldOfView = FOV;
+
         Vector3 mousePoint = Input.mousePosition;
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (ShortRangeSoldierSelected && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+            
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, 300.0f))
             {
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out hit, 300.0f))
-                {
-                    if(money >= 10 )
-                    {
-                        GameObject newSoldier = Instantiate(soldier, hit.point, Quaternion.identity, Army.transform);
-                        myArmy.Add(newSoldier);
-                        money -= 10;
-                        moneyLabel.text = money.ToString();
-                        quantityLabel.text = "x" + myArmy.Count.ToString();
-                    }
-                    
 
+                hitName = hit.transform.name;
+
+                if (ShortRangeSoldierSelected && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() && money >= 10)
+                {
+                    
+                    GameObject newSoldier = Instantiate(soldier, hit.point, Quaternion.identity, Army.transform);
+                    newSoldier.transform.LookAt(mapCenter.transform);
+                    newSoldier.transform.eulerAngles = new Vector3(0f, newSoldier.transform.eulerAngles.y, 0f);
+                    myArmy.Add(newSoldier);
+                    money -= 10;
+                    moneyLabel.text = money.ToString();
+                    quantityLabel.text = "x" + myArmy.Count.ToString();
                 }
+
+
+            }
+        }
+
+           
+        
+
+        if (Input.GetMouseButton(0))
+        {
+
+            
+            if (!ShortRangeSoldierSelected && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() && hitName != "TT_RTS_Demo_Character(Clone)")
+            {
+                float horizontalOffset = horizontalSpeed * Input.GetAxis("Mouse X") * Time.deltaTime;
+                float verticalOffset = verticalSpeed * Input.GetAxis("Mouse Y") * Time.deltaTime;
+
+                Camera.main.transform.Translate(-horizontalOffset, -verticalOffset, 0);
             }
             
         }
@@ -95,43 +131,6 @@ public class GameSetUp : MonoBehaviour
 
     }
 
-
-    public void zoomIn()
-    {
-        if(Camera.main.transform.position.y > 5) Camera.main.transform.Translate(Vector3.forward * 2);
-        else if (Camera.main.transform.position.y > 1) Camera.main.transform.Translate(Vector3.forward * 0.5f);
-    }
-
-    public void zoomOut()
-    {
-
-        if(Camera.main.transform.position.y < 5) Camera.main.transform.Translate(Vector3.back * 0.5f);
-        else if (Camera.main.transform.position.y < 25) Camera.main.transform.Translate(Vector3.back  * 2);
-    }
-
-    public void goUp()
-    {
-        if (Camera.main.transform.position.y < 5) Camera.main.transform.Translate(Vector3.up * 0.2f);
-        else Camera.main.transform.Translate(Vector3.up * 2);
-    }
-
-    public void goDown()
-    {
-        if (Camera.main.transform.position.y < 5) Camera.main.transform.Translate(Vector3.down * 0.2f);
-        else Camera.main.transform.Translate(Vector3.down * 2);
-    }
-
-    public void goLeft()
-    {
-        if (Camera.main.transform.position.y < 5) Camera.main.transform.Translate(Vector3.left * 0.2f);
-        else Camera.main.transform.Translate(Vector3.left * 2);
-    }
-
-    public void goRight()
-    {
-        if (Camera.main.transform.position.y < 5) Camera.main.transform.Translate(Vector3.right * 0.2f);
-        else Camera.main.transform.Translate(Vector3.right * 2);
-    }
 
     private void ShowSelectedLevel()
     {
@@ -165,6 +164,7 @@ public class GameSetUp : MonoBehaviour
     public void StartBattle()
     {
         Debug.Log("Start battle");
+        isStarted = true;
     }
 
     public void deleteLast()
