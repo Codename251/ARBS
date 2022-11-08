@@ -261,8 +261,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2524375724078657369}
   - component: {fileID: 2524375724078657368}
-  - component: {fileID: 2524375724078657375}
-  - component: {fileID: 2524375724078657370}
   - component: {fileID: 2524375724078657364}
   - component: {fileID: 2625447585997680440}
   m_Layer: 0
@@ -318,40 +316,6 @@ MonoBehaviour:
   m_UseChildSensors: 1
   m_UseChildActuators: 1
   m_ObservableAttributeHandling: 0
---- !u!114 &2524375724078657375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2524375724078657374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc0d71f2bd47d4355b2e34e4203a4920, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 1000
-  targetTransform: {fileID: 9018666765768383654}
-  winMaterial: {fileID: 2100000, guid: 3294e93619ef21548b5276a6fd7c5ad9, type: 2}
-  loseMaterial: {fileID: 2100000, guid: eadf0fb67df864244ab648c68b5dcf70, type: 2}
-  floorMeshRenderer: {fileID: 2524375725492427051}
---- !u!114 &2524375724078657370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2524375724078657374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DecisionPeriod: 5
-  TakeActionsBetweenDecisions: 1
 --- !u!54 &2524375724078657364
 Rigidbody:
   m_ObjectHideFlags: 0

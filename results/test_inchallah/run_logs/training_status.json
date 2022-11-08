@@ -1,0 +1,51 @@
+{
+    "MoveToKnight": {
+        "checkpoints": [
+            {
+                "steps": 54528,
+                "file_path": "results/test_inchallah/MoveToKnight/MoveToKnight-54528.onnx",
+                "reward": null,
+                "creation_time": 1667898742.013982,
+                "auxillary_file_paths": [
+                    "results/test_inchallah/MoveToKnight/MoveToKnight-54528.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 54528,
+            "file_path": "results/test_inchallah/MoveToKnight.onnx",
+            "reward": null,
+            "creation_time": 1667898742.013982,
+            "auxillary_file_paths": [
+                "results/test_inchallah/MoveToKnight/MoveToKnight-54528.pt"
+            ]
+        }
+    },
+    "MoveToEnnemy": {
+        "checkpoints": [
+            {
+                "steps": 54528,
+                "file_path": "results/test_inchallah/MoveToEnnemy/MoveToEnnemy-54528.onnx",
+                "reward": null,
+                "creation_time": 1667898742.0641658,
+                "auxillary_file_paths": [
+                    "results/test_inchallah/MoveToEnnemy/MoveToEnnemy-54528.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 54528,
+            "file_path": "results/test_inchallah/MoveToEnnemy.onnx",
+            "reward": null,
+            "creation_time": 1667898742.0641658,
+            "auxillary_file_paths": [
+                "results/test_inchallah/MoveToEnnemy/MoveToEnnemy-54528.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.7.1"
+    }
+}

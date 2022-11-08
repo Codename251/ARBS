@@ -1,0 +1,29 @@
+{
+    "MoveToEnnemy": {
+        "checkpoints": [
+            {
+                "steps": 293082,
+                "file_path": "results/test_arena__really_good/MoveToEnnemy/MoveToEnnemy-293082.onnx",
+                "reward": 2.0,
+                "creation_time": 1667916813.060062,
+                "auxillary_file_paths": [
+                    "results/test_arena__really_good/MoveToEnnemy/MoveToEnnemy-293082.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 293082,
+            "file_path": "results/test_arena__really_good/MoveToEnnemy.onnx",
+            "reward": 2.0,
+            "creation_time": 1667916813.060062,
+            "auxillary_file_paths": [
+                "results/test_arena__really_good/MoveToEnnemy/MoveToEnnemy-293082.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.7.1"
+    }
+}

@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1667926947",
+        "python_version": "3.6.13 |Anaconda, Inc.| (default, Feb 23 2021, 12:58:59) \n[GCC Clang 10.0.0 ]",
+        "command_line_arguments": "/Users/adrienschockaert/opt/anaconda3/envs/ml_unity_env/bin/mlagents-learn --run-id=final",
+        "mlagents_version": "0.28.0",
+        "mlagents_envs_version": "0.28.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.7.1",
+        "numpy_version": "1.19.5",
+        "end_time_seconds": "1667926967"
+    },
+    "total": 20.605563385004643,
+    "count": 1,
+    "self": 0.007983393996255472,
+    "children": {
+        "run_training.setup": {
+            "total": 0.018848167004762217,
+            "count": 1,
+            "self": 0.018848167004762217
+        },
+        "TrainerController.start_learning": {
+            "total": 20.578731824003626,
+            "count": 1,
+            "self": 0.0005862100078957155,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 20.578126497988706,
+                    "count": 1,
+                    "self": 20.578126497988706
+                },
+                "trainer_threads": {
+                    "total": 1.6450067050755024e-06,
+                    "count": 1,
+                    "self": 1.6450067050755024e-06
+                },
+                "TrainerController._save_models": {
+                    "total": 1.7471000319346786e-05,
+                    "count": 1,
+                    "self": 1.7471000319346786e-05
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "MoveToEnnemy": {
+        "checkpoints": [
+            {
+                "steps": 5312,
+                "file_path": "results/test_100/MoveToEnnemy/MoveToEnnemy-5312.onnx",
+                "reward": null,
+                "creation_time": 1667898404.001132,
+                "auxillary_file_paths": [
+                    "results/test_100/MoveToEnnemy/MoveToEnnemy-5312.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5312,
+            "file_path": "results/test_100/MoveToEnnemy.onnx",
+            "reward": null,
+            "creation_time": 1667898404.001132,
+            "auxillary_file_paths": [
+                "results/test_100/MoveToEnnemy/MoveToEnnemy-5312.pt"
+            ]
+        }
+    },
+    "MoveToKnight": {
+        "checkpoints": [
+            {
+                "steps": 5312,
+                "file_path": "results/test_100/MoveToKnight/MoveToKnight-5312.onnx",
+                "reward": null,
+                "creation_time": 1667898404.076056,
+                "auxillary_file_paths": [
+                    "results/test_100/MoveToKnight/MoveToKnight-5312.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5312,
+            "file_path": "results/test_100/MoveToKnight.onnx",
+            "reward": null,
+            "creation_time": 1667898404.076056,
+            "auxillary_file_paths": [
+                "results/test_100/MoveToKnight/MoveToKnight-5312.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.7.1"
+    }
+}
