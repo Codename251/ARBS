@@ -2,25 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoldierBehavior : MonoBehaviour
+public class SkeletonBehavior : MonoBehaviour
 {
-
-    private int selectedLvl;
-    private GameObject currentLevel;
+    
     private GameSetUp gameSetUp;
+    private GameObject MyArmy; 
 
     private Transform target;
     private float speed = 0.1f;
 
     private bool isAttacking;
 
-    
-
     // Start is called before the first frame update
     void Start()
     {
-        selectedLvl = PlayerPrefs.GetInt("Selected_Level");
-        currentLevel = GameObject.Find("Level" + selectedLvl.ToString());
+        MyArmy = GameObject.Find("MyArmy");
         gameSetUp = GameObject.Find("GameSetUpController").GetComponent<GameSetUp>();
         GetNewTarget();
         isAttacking = false;
@@ -45,29 +41,36 @@ public class SoldierBehavior : MonoBehaviour
                 isAttacking = false;
                 GetNewTarget();
             }
+
+            else if(target == null)
+            {
+                GetNewTarget();
+            }
         }
     }
 
     private void GetNewTarget()
     {
-        if(currentLevel.transform.childCount > 0)
+        if(MyArmy.transform.childCount > 0)
         {
-            target = currentLevel.transform.GetChild(Random.Range(0, currentLevel.transform.childCount - 1));
+            target = MyArmy.transform.GetChild(Random.Range(0, MyArmy.transform.childCount - 1));
         }
+        
     }
 
     void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.gameObject.name == "LowPolySkeleton")
+
+
+        if (collision.gameObject.name == "TT_RTS_Demo_Character(Clone)")
         {
 
             isAttacking = true;
 
+         
 
         }
     }
-
-
 
 }

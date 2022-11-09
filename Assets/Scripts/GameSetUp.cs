@@ -158,6 +158,8 @@ public class GameSetUp : MonoBehaviour
         SetUpUI.SetActive(false);
         StartBattleButton.SetActive(true);
         level1.transform.SetParent(ARtarget.transform);
+        level2.transform.SetParent(ARtarget.transform);
+        level3.transform.SetParent(ARtarget.transform);
         Army.transform.SetParent(ARtarget.transform);
         Battlefield.transform.SetParent(ARtarget.transform);
     }

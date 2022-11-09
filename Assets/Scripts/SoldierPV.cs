@@ -7,8 +7,12 @@ public class SoldierPV : MonoBehaviour
 
     private int PV;
     private bool isDead;
+    public bool isAttacking;
 
     private GameSetUp gameSetUp;
+
+    public float attackRate = 0.2f;
+    private float timeSinceLastAttack = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +20,9 @@ public class SoldierPV : MonoBehaviour
         PV = 10;
         isDead = false;
         gameSetUp = GameObject.Find("GameSetUpController").GetComponent<GameSetUp>();
-    
+        isAttacking = false;
+
+
     }
 
     // Update is called once per frame
@@ -26,6 +32,18 @@ public class SoldierPV : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        if (isAttacking)
+        {
+            timeSinceLastAttack += Time.deltaTime;
+
+            if(timeSinceLastAttack >= attackRate)
+            {
+                timeSinceLastAttack = 0f;
+                losePV();
+            }
+            
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -33,18 +51,24 @@ public class SoldierPV : MonoBehaviour
         
         if (collision.gameObject.name == "LowPolySkeleton")
         {
-            if(Random.Range(0.0f, 1.0f) < 0.5f && !isDead && gameSetUp.isStarted)
-            {
-                PV -= 1;
-                if (PV == 0) isDead = true;
-                print("Soldier : " + PV);
-            }
 
-            transform.Translate(Vector3.back * 0.02f);
+            isAttacking = true;
+
+            transform.GetComponent<Animator>().SetBool("isAttacking", true);
+
+            //transform.Translate(Vector3.back * 0.02f);
 
 
+        }
+    }
 
-
+    private void losePV()
+    {
+        if (Random.Range(0.0f, 1.0f) < 0.5f && !isDead && gameSetUp.isStarted)
+        {
+            PV -= 1;
+            if (PV == 0) isDead = true;
+            print("Soldier : " + PV);
         }
     }
 }
