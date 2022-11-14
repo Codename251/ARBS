@@ -7,7 +7,7 @@ Ce projet a été réalisé dans le cadre de l'UV 3dETech de IMT Nord Europe, il
 Le but du jeu est de construire une armée capable de battre les troupes ennemies en plaçant des soldats au bonne endroit de la map et en choisissant leur nombre. 
 
 ## Fonctionnement du jeu
-###Ecran d'accueuil
+### Ecran d'accueuil
 Après le lancement du jeu, nous arrivons sur l'écran d'accueil. Sur ce dernier il est possible de choisir de jouer en joueur contre joueur (pas encore implemanté) ou de jouer contre l'ordinateur. Depuis le menu il est aussi possible de quitter le jeu.
 ### Choix du niveau
 Lorsque le joueur choisi de jouer contre l'ordinteur, il doit ensuite choisir le niveau de difficulté. A ce jour, il y en a 3, plus le niveau est élevé, plus le nombre d'ennemie augmente. 
